@@ -43,3 +43,25 @@
 - rm = remove/delete a path
 - mv = move/drag resource from 1 path to another, rename
 - cd = navigate between paths
+
+# .NET
+
+- platform = Web, Mobile, Desktop, Drivers, Data, AI/ML, VR/MR/AR, Gaming
+- languages = C#, F#, JS, Python, VB, VB.NET, Java Runtime, C, C++, SQL, MongoDB
+- sdk = software development kit, .NET Standard (StdLib)
+- .NET Framework = windows only (100%)
+- .NET Core = all OS
+- Web = ASP.NET (MVC, WebAPI, SignalR, WCF)
+- Mobile = Xamarin (iOS, iPadOS, macOS supported, Android)
+- Desktop = UWP/UAP, XAML (windows only)
+- Drivers = .NET StdLib
+- Data = Entity Framework, ADO.NET
+- AI/ML = ML.NET (machine learning, neural networks)
+- VR/MR/AR = Hololens, Azure Vision
+- Gaming = Unity Engine
+
+## dotnet
+
+- new = create a new project/solution
+- build = compile the code
+- run =  execute the code
