@@ -44,7 +44,7 @@
 - mv = move/drag resource from 1 path to another, rename
 - cd = navigate between paths
 
-# .NET
+## .NET
 
 - platform = Web, Mobile, Desktop, Drivers, Data, AI/ML, VR/MR/AR, Gaming
 - languages = C#, F#, JS, Python, VB, VB.NET, Java Runtime, C, C++, SQL, MongoDB
@@ -65,3 +65,17 @@
 - new = create a new project/solution
 - build = compile the code
 - run =  execute the code
+
+## C#
+
+- statically-typed language and strongly-typed language
+- primitive types (int, long, float, double, bool, string, char, short, byte, decimal)
+- scopes (namespace, class/struct, method, block)
+- compilation/runtime process
+- .NET Assembly = CIL (common intermediate language), DLL, EXE, SVC
+- CLR = common language runtime (BCL, CTS, VES, JIT)
+- value vs reference types = leverage the content in memory (deep copy) or leverage the address in memory (shallow copy)
+- type inference = the content of the variable sets the variable type (not predefined)
+- parsing vs casting (implicit, explicit)
+- boxing vs unboxing
+- access modifiers =  accessibility levels, private, public, protected, internal
