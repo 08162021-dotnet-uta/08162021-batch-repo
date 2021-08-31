@@ -78,6 +78,7 @@ namespace StringManipulationChallenge
         public static int SearchChar(string userInputString, char charUserWants)
         {
             throw new NotImplementedException("SearchChar method not implemented.");
+
         }
 
         /// <summary>
