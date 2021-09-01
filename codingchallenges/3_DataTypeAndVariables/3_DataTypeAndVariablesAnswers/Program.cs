@@ -89,8 +89,8 @@ namespace _3_DataTypeAndVariablesChallenge
         public static int? StringToInt(string numString)
         {
             //throw new NotImplementedException();
-            int intValue;
-            bool result = Int32.TryParse(numString, out intValue);
+            // int intValue;
+            bool result = Int32.TryParse(numString, out int intValue);
             if (result == false)
             {
                 return null;

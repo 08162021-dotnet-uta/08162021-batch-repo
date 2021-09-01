@@ -13,6 +13,6 @@
 
   <ItemGroup>
   
-    <ProjectReference Include="..\3_DataTypeAndVariablesChallenge_StudentCopy\3_DataTypeAndVariablesChallenge.csproj" />
+    <ProjectReference Include="..\3_DataTypeAndVariables\3_DataTypeAndVariables.csproj" />
   </ItemGroup>
 </Project>
