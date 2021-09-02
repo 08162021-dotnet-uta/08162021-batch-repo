@@ -1,0 +1,150 @@
+<html lang="en">
+
+<head>
+  <!-- unicode transformation format -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marks SuperCool Html Demo</title>
+</head>
+
+<body>
+  <div>This is the first text in the demo.</div> <br>
+  <p>This is a <span style="color:magenta">large</span> paragraph </p>
+  <i>this is italic</i> <br>
+  <em>this is also italic</em><br>
+  <b>this is bold</b><br>
+  <ins>this is inserted text</ins><br>
+  <p>this is <sup>superscript</sup> and this is <sub>subscript</sub>... sup for exponentials
+    and sub for references.</p><br>
+  <p> attributes can be applied to any element</p>
+  <p id="id1" class="class1" style="color:green">global atttibutes are the id, class, style, title</p>
+  <p class="class1 class2 class3" title="Marks title is Sr. Estupendo">global atttibutes are the id, class, style, title
+  </p>
+  <h1>this is biggest</h1>
+  <h2>not so big</h2>
+  <h3>smaller</h3>
+  <h4>even smaller</h4>
+  <h5>small</h5>
+  <h6>smallest</h6><br>
+  <a href="https://revature.com/" title="link to your future!">This is Revature</a><br>
+  <!-- uses a relative path or the global path to the image. -->
+  <a href="https://revature.com/" target="_blank"><img src="rev-logo-2.png"
+      alt="alternative text if you can't get the image" title="Revature logo" width="100px"></a>
+
+  <ul>
+    <li> listitem1</li>
+    <li> listitem2</li>
+    <li> listitem3</li>
+    <li> listitem4</li>
+  </ul>
+
+  <ol>
+    <li> listitem1</li>
+    <li> listitem2</li>
+    <li> listitem3</li>
+    <li> listitem4</li>
+  </ol>
+
+  <ul>
+    <li type="disc">Ordered list</li>
+    <li type="square">Unordered list</li>
+    <li type="circle">Definition list</li>
+  </ul>
+
+  <table style="width:300px">
+    <thead style="text-align: right;">
+      <th>header1</th>
+      <th>header2</th>
+      <th>header3</th>
+      <th>header4</th>
+    </thead>
+    <tbody style="text-align: right;">
+      <tr>
+        <td>tabledata1</td>
+        <td>tabledata2</td>
+        <td>tabledata3</td>
+        <td>tabledata4</td>
+      </tr>
+      <tr>
+        <td>tabledata1</td>
+        <td>tabledata2</td>
+        <td>tabledata3</td>
+        <td>tabledata4</td>
+      </tr>
+      <tr>
+        <td>tabledata1</td>
+        <td>tabledata2</td>
+        <td>tabledata3</td>
+        <td>tabledata4</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- GET is the default method on forms -->
+  <form action="myFunction()" method="GET">
+    <ul>
+      <li>
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname">
+      </li>
+      <li>
+        <label for="lname">Last Name:</label>
+        <input type="text" name="lname">
+      </li>
+      <li>
+        <input type="submit" value="Submit your Guy">
+      </li>
+    </ul>
+  </form>
+
+  <form action="myFunction()" method="GET">
+    <ul>
+      <li>
+        <label for="username">UserName:</label>
+        <input type="text" name="username" placeholder="dubblebubble" autofocus>
+      </li>
+      <li>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+      </li>
+      <li>
+        <input type="submit" value="Submit your Secret Guy">
+      </li>
+      <li>
+        <input type="checkbox" name="Check this box for cool html emails">
+      </li>
+      <li>
+        <input type="color" name="colorpicker">
+      </li>
+      <input type="date" name="birthdate"><br>
+      <input type="file" name="chosenfile" id="my pic">
+      <div>
+        <label for="myradio1">1-userVisibleRadioCircle</label>
+        <input type="radio" name="radio1" id="myradio1" value="val1" checked><br>
+        <label for="myradio2">2-userVidibleradiocircle</label>
+        <input type="radio" name="radio1" id="myradio2" value="val2"><br>
+        <label for="myradio3">3-userVidibleradiocircle</label>
+        <input type="radio" name="radio1" id="myradio3" value="val3"><br>
+        <label for="myradio4">4-userVidibleradiocircle</label>
+        <input type="radio" name="radio1" id="myradio4" value="val4"><br>
+      </div>
+      <br>
+      <select name="mySelectList" id="sl1">
+        <option value="opt1">1-UserVisibleOption</option>
+        <option value="opt2">2-UserVisibleOption</option>
+        <option value="opt3" selected>3-UserVisibleOption</option>
+        <option value="opt4">4-UserVisibleOption</option>
+      </select>
+    </ul>
+  </form>
+
+  <p>&lt;, &#60, &#x3c;</p>
+  <p>&nbsp;, &#160 &#160 &#160 &#160 &#160 &#160 &#160, &#xa0</p>
+  <p>&#8594</p>
+  <p>&commat;</p>
+  <p>&trade;</p>
+
+</body>
+
+</html>
