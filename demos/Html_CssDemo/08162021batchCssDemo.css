@@ -1,0 +1,104 @@
+/* div#id2{
+  color: blue;
+  text-align: right;
+} */
+
+#id1{
+  border: 3px solid;
+  border-color: black;
+  color: aqua;
+}
+
+.class1, .class2{
+  border: 3px dotted;
+  border-right: 10px dotted;
+}
+
+/* * {
+  text-decoration:line-through;
+  text-decoration-style: wavy;
+} */
+
+b.class3{
+  color:aqua;
+  font-size: 100px;
+}
+
+/* em#id2{
+  text-align: right;
+} */
+
+.class3:hover{
+  color: blueviolet;
+}
+
+div:nth-child(3){
+  font-weight: bold;
+  color: brown;
+}
+
+.class4:disabled{
+  background-color: blue;
+  /* content: value:"this is content"; */
+}
+
+th::before{
+  content: "this is content--";
+}
+
+.class6::first-line{
+  color: rgb(214, 135, 44);
+}
+/* p::after{
+  font-style: oblique;
+  content: "this comes after the <p> tag"
+} */
+
+h1 p{
+  color:chocolate;
+}
+
+h2>p{
+  font-family: "Comic Sans ms";
+  font-stretch: expanded;
+}
+
+h3{
+  width: 65px;
+  height: 100px;
+  text-align: center;
+  border: 30px double;
+  border-color: palegoldenrod;
+}
+
+h4{
+  background-color: hsl(100, 50%, 100%);
+}
+
+#id7{
+  /* display: none; */
+  background-color:blueviolet;
+}
+ul{
+  background-color: black !important;
+}
+.class7{
+  background-color: blue;
+}
+
+#id8{
+  display: inline;
+}
+
+h6.stickier{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+  padding: 50px;
+  font-size: 20px;
+}
+
+
+
+

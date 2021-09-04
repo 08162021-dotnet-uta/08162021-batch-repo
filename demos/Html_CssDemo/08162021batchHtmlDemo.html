@@ -6,23 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marks SuperCool Html Demo</title>
+  <link rel="stylesheet" href="08162021batchCssDemo.css">
 </head>
 
 <body>
-  <div>This is the first text in the demo.</div> <br>
-  <p>This is a <span style="color:magenta">large</span> paragraph </p>
+  <div id="id2">This is the first
+    <span>this is <h1 id="id8">this is a nested h1</h1> a nested span</span> text in the demo.
+    <p>this is the second child</p>
+    <h5>this is the third child</h5>
+  </div> <br>
+  <h6 class="stickier">this is hte fourth child</h6>
+  <p id="id1">This is a <span style="color:magenta">large</span> paragraph </p>
   <i>this is italic</i> <br>
-  <em>this is also italic</em><br>
-  <b>this is bold</b><br>
-  <ins>this is inserted text</ins><br>
+  <em id="id2">this is also italic</em><br>
+  <p class="class3">this is bold</b><br>
+    <ins class="class2">this is inserted text</ins><br>
   <p>this is <sup>superscript</sup> and this is <sub>subscript</sub>... sup for exponentials
     and sub for references.</p><br>
   <p> attributes can be applied to any element</p>
   <p id="id1" class="class1" style="color:green">global atttibutes are the id, class, style, title</p>
-  <p class="class1 class2 class3" title="Marks title is Sr. Estupendo">global atttibutes are the id, class, style, title
+  <p class="class1 class2 class3" title="Marks title is Sr. Estupendo">global atttibutes are the id, class, style,
+    title
   </p>
-  <h1>this is biggest</h1>
-  <h2>not so big</h2>
+  <h1 class="class3">this is biggest
+    <p>this is a decendent
+    <p>nested decendent</p> of the h1.</p>
+    <p>this is another decendent of the h1.</p>
+
+  </h1>
+  <h2>not so big
+    <p>this p is a child of h2
+    <div>
+      <p>this s a grandchild of the h2</p>
+      </p>
+    </div>
+    <p>this p is a second child of h2</p>
+
+  </h2>
   <h3>smaller</h3>
   <h4>even smaller</h4>
   <h5>small</h5>
@@ -32,7 +52,7 @@
   <a href="https://revature.com/" target="_blank"><img src="rev-logo-2.png"
       alt="alternative text if you can't get the image" title="Revature logo" width="100px"></a>
 
-  <ul>
+  <ul class="class7" id="id7">
     <li> listitem1</li>
     <li> listitem2</li>
     <li> listitem3</li>
@@ -93,7 +113,7 @@
         <input type="text" name="lname">
       </li>
       <li>
-        <input type="submit" value="Submit your Guy">
+        <input class="class4" type="submit" value="Submit your Guy" disabled>
       </li>
     </ul>
   </form>
@@ -144,6 +164,12 @@
   <p>&#8594</p>
   <p>&commat;</p>
   <p>&trade;</p>
+
+  <p class="class6">Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Eveniet optio est voluptate
+    sint cum, mollitia aliquid ratione nulla dignissimos.
+    Iure, reprehenderit modi qui provident
+    cupiditate totam quasi quas corporis molestias?</p>
 
 </body>
 
