@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>_3_DataTypeAndVariablesChallenge.Tests</RootNamespace>
+    <RootNamespace>_7_GuessingGameChallenge.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-  
-    <ProjectReference Include="..\3_DataTypeAndVariablesChallenge_StudentCopy\3_DataTypeAndVariablesChallenge.csproj" />
+    <ProjectReference Include="..\7_GuessingGame\7_GuessingGameChallenge.csproj" />
   </ItemGroup>
+  
 </Project>

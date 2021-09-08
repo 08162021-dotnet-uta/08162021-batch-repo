@@ -6,15 +6,6 @@ namespace StringManipulationChallenge
     {
         static void Main(string[] args)
         {
-            string userInputString;         // this will hold your users message.
-            int numberLessThanStringLength; // this will hold the number from steps 6 and 7.
-            int elementNum;                 // this will hold the element number within the message that your user indicates.
-            string lowerCaseString;         // this will hold the return of StringToUpper()
-            char char1;                     // this will hold the char value that your user wants to search for in the message.
-            string fName;                   // this will hold the users first name.
-            string lName;                   // this will hold the users last name.
-            string userFullName;            // this will hold the users full name.
-
             /*
             *
             * implement the required code here and within the methods below.
@@ -87,6 +78,7 @@ namespace StringManipulationChallenge
         public static int SearchChar(string userInputString, char charUserWants)
         {
             throw new NotImplementedException("SearchChar method not implemented.");
+
         }
 
         /// <summary>
