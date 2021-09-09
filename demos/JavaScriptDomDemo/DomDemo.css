@@ -1,0 +1,13 @@
+body{
+  background: rgb(96, 164, 219);
+}
+
+.todoitem{
+  border: solid;
+  border-width: 3px;
+  border-color: rgb(250,255,245);
+}
+
+.hidethis{
+  display: none;
+}
