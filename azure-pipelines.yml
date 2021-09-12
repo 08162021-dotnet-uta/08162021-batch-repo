@@ -46,3 +46,8 @@ jobs:
       echo Add YET other tasks to build, test, and deploy your project.
       echo Again.... See https://aka.ms/yaml
     displayName: '2Run a multi-line script'
+- job: job3
+  dependsOn: job1
+  steps:
+  - script: echo second time! Hello, world!
+    displayName: 'Again - Run a one-line script'
