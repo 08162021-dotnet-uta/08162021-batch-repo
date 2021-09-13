@@ -15,7 +15,7 @@ variables:
 stages:
 - stage: stage1_build
   jobs:
-  - job: job1
+  - job: buildjob1
     steps:
     - bash: echo this is how you use a variable => $(pathtoproj)
       displayName: 'Run a one-line script'
@@ -28,7 +28,7 @@ stages:
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
       displayName: 'Run a multi-line script'
-  - job: job2
+  - job: buildjob2
     displayName: Job2
     steps:
     - script:
@@ -38,10 +38,21 @@ stages:
 
 - stage: stage2_test
   jobs:
-  - job: job1
+  - job: testjob1
     steps:
     - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
       displayName: 'Run a one-line script'
     - script:
         echo this is script2.job2.
       displayName: 'ran the stage2.script2'
+
+- stage: stage3_deploy
+  jobs:
+  - job: deployjob1
+    steps:
+    - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
+      displayName: 'Run a one-line script'
+    - script:
+        echo this is script2.stagedeploy.job2.
+      displayName: 'ran the stage2.script2'
+  #dependsOn: []
