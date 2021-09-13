@@ -3,14 +3,25 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+# trigger:
+# - main
+
+variables:
+  pathtoproj: variable1
+  pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
+
+pr: none
+trigger: 
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - $(pathtoproject)
 
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  pathtoproj: variable1
 
 stages:
 - stage: stage1_build
