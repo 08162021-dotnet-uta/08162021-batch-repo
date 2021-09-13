@@ -10,6 +10,8 @@ variables:
   pathtoproj: variable1
   pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
 
+# this is how you can designate a specific path  for the trigger
+# no other path can trigger a build other than the one specified.
 pr: none
 trigger: 
   branches:
