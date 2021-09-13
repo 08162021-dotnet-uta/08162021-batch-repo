@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  pathtoproj: myprj/p2/myprj.csproj
+  pathtoproj: variable1
 
 stages:
 - stage: stage1_build
