@@ -1,8 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace _08162021batchDemoStore
 {
-	internal class ViewModelCustomer
+	public class ViewModelCustomer
 	{
 		private string fname;
+
+		[StringLength(20, MinimumLength = 1)]
 		public string Fname
 		{
 			get

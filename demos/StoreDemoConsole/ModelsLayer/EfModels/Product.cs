@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DemoStoreDbContext.Models
+namespace _08162021batchDemoStore
 {
     public partial class Product
     {
