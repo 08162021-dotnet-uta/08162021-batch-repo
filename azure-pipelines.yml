@@ -55,4 +55,4 @@ stages:
     - script:
         echo this is script2.stagedeploy.job2.
       displayName: 'ran the stage2.script2'
-  #dependsOn: []
+  dependsOn: []
