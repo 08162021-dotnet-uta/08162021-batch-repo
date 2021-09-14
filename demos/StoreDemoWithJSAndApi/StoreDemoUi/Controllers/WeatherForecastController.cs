@@ -39,6 +39,7 @@ namespace StoreDemoUi.Controllers
 		[HttpGet("thisisapost")]
 		public ActionResult<string> mypost()
 		{
+			//go anything... call a method in the business layer, etc...
 			return "this is your string";
 		}
 	}

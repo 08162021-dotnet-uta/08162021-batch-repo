@@ -4,6 +4,7 @@
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net5.0</TargetFramework>
 		<RootNamespace>_08162021batchDemoStore</RootNamespace>
+		<UserSecretsId>fd0cca30-ccad-492c-be1a-f1f13cbcc04d</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,6 +18,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

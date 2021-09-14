@@ -3,7 +3,7 @@ const listofcustomers = document.querySelector('.listofcustomers');
 const randombutton = document.querySelector(".randombutton");
 
 button.addEventListener('click', (e) => {
-	fetch('WeatherForecast')
+	fetch('WeatherForecast') // Fetch() is default 'GET'
 		.then(res => {
 			if (!res.ok) {
 				console.log('NOT OK')
@@ -41,3 +41,6 @@ randombutton.addEventListener('click', (e) => {
 		.catch(err => console.log(`There was an error ${err}`));
 });
 
+function SeePlayers() {
+	location.href = "list-of-customers.html";
+}

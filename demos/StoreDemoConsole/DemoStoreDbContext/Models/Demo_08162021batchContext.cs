@@ -24,10 +24,10 @@ namespace DemoStoreDbContext.Models
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			if (!optionsBuilder.IsConfigured)
-			{
-				optionsBuilder.UseSqlServer("Server=.\\SQLExpress04;Database=Demo_08162021batch;Trusted_Connection=True;");
-			}
+			//if (!optionsBuilder.IsConfigured)
+			//{
+			//	optionsBuilder.UseSqlServer("Server=.\\SQLExpress04;Database=Demo_08162021batch;Trusted_Connection=True;");
+			//}
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
