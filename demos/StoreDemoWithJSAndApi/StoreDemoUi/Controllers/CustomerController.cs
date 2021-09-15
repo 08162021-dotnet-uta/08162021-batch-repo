@@ -108,5 +108,30 @@ namespace StoreDemoUi.Controllers
 				return View();
 			}
 		}
-	}
-}
+
+		/// <summary>
+		/// This method takes a first name and last name and return a validted customer, if found
+		/// otherwise returns NotFound().
+		/// </summary>
+		/// <param name="fname"></param>
+		/// <param name="lname"></param>
+		/// <returns></returns>
+		[HttpGet("login/{fname}/{lname}")]
+		public async Task<ActionResult<ViewModelCustomer>> Login(string fname, string lname)
+		{
+			if (!ModelState.IsValid) return BadRequest();
+
+			ViewModelCustomer c = new ViewModelCustomer() { Fname = fname, Lname = lname };
+			//send fname and lname into a method of the business layer to check the Db fo that guy/gal;
+			ViewModelCustomer c1 = await _customerrepo.LoginCustomerAsync(c);
+			if (c1 == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(c1);
+		}
+
+
+	}//EoC
+}// EoN

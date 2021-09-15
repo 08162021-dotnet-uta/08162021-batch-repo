@@ -44,3 +44,7 @@ randombutton.addEventListener('click', (e) => {
 function SeePlayers() {
 	location.href = "list-of-customers.html";
 }
+
+function Login() {
+	location.href = "login.html";
+}
