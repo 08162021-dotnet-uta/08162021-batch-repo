@@ -46,10 +46,20 @@ namespace StoreDemoUi.Controllers
 
 		// GET: CustomerController/Create - this is the route for conventional routing 
 		// Attribute routing involves using attributes to define the path
-		[HttpPut("customercreate/{id}")]
-		public ActionResult Create(int id)
+		[HttpPost("register")]
+		public async Task<ActionResult<ViewModelCustomer>> Create(ViewModelCustomer c)
 		{
-			return View();
+			if (!ModelState.IsValid) return BadRequest();
+
+			//ViewModelCustomer c = new ViewModelCustomer() { Fname = fname, Lname = lname };
+			//send fname and lname into a method of the business layer to check the Db fo that guy/gal;
+			ViewModelCustomer c1 = await _customerrepo.RegisterCustomerAsync(c);
+			if (c1 == null)
+			{
+				return NotFound();
+			}
+
+			return Created($"~customer/{c1.CustomerId}", c1);
 		}
 
 		// POST: CustomerController/Create
@@ -108,5 +118,30 @@ namespace StoreDemoUi.Controllers
 				return View();
 			}
 		}
-	}
-}
+
+		/// <summary>
+		/// This method takes a first name and last name and return a validted customer, if found
+		/// otherwise returns NotFound().
+		/// </summary>
+		/// <param name="fname"></param>
+		/// <param name="lname"></param>
+		/// <returns></returns>
+		[HttpGet("login/{fname}/{lname}")]
+		public async Task<ActionResult<ViewModelCustomer>> Login(string fname, string lname)
+		{
+			if (!ModelState.IsValid) return BadRequest();
+
+			ViewModelCustomer c = new ViewModelCustomer() { Fname = fname, Lname = lname };
+			//send fname and lname into a method of the business layer to check the Db fo that guy/gal;
+			ViewModelCustomer c1 = await _customerrepo.LoginCustomerAsync(c);
+			if (c1 == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(c1);
+		}
+
+
+	}//EoC
+}// EoN

@@ -4,6 +4,7 @@ namespace _08162021batchDemoStore
 {
 	public class ViewModelCustomer
 	{
+		public int CustomerId { get; set; }
 		private string fname;
 
 		[StringLength(20, MinimumLength = 1)]
