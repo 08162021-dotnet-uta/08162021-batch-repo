@@ -46,9 +46,11 @@ stages:
         #maybe not needed?
           command: 'restore'
           restoreSolution: '$(pathToSln)'
+  
   # - stage: Sonarcloud
     # - job: SonarCloud
     #   steps:
+  
   - stage: Publish
     jobs:
     - job: publish
@@ -72,10 +74,6 @@ stages:
           #ResourceGroupName: '08162021batch-resource-group'
           #SlotName: 'production'
           packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-
-
-    
-
 
 
 # stages:
