@@ -29,24 +29,17 @@ variables:
   buildConfiguration: 'Release'
 
 stages:
-  - stage: Build
-    jobs:
-    - job: buildJOb
-      steps:
-      #this step may not be needed
-      # - task: DotNetCoreCLI@2
-      #   displayName: 'install .NET 5 sdk'
-      #   inputs:
-      #     packageType: 'sdk'
-      #     version: '5.0.x'
-      #test
-      - task: NuGetToolInstaller@1
+  # - stage: Build
+  #   jobs:
+  #   - job: buildJOb
+  #     steps:
+      # - task: NuGetToolInstaller@1
 
-      - task: NuGetCommand@2
-        inputs:
-        #maybe not needed?
-          command: 'restore'
-          restoreSolution: '$(pathtosln)'
+      # - task: NuGetCommand@2
+      #   inputs:
+      #   #maybe not needed?
+      #     command: 'restore'
+      #     restoreSolution: '$(pathtosln)'
   
   - stage: Sonarcloud
     jobs:
@@ -65,7 +58,7 @@ stages:
         inputs:
           command: 'build'
           projects: $(pathtosln)
-          workingDirectory: '$(pathtoproject)'
+          #workingDirectory: '$(pathtoproject)'
           arguments: '--configuration $(buildConfiguration)'
   
       - task: DotNetCoreCLI@2
@@ -79,7 +72,7 @@ stages:
       - task: PublishCodeCoverageResults@1
         inputs:
           codeCoverageTool: 'Cobertura'
-          summaryFileLocation: '**/cobertura/coverage.xml'
+          summaryFileLocation: '**/coburtura/coverage.xml'
       - task: SonarCloudAnalyze@1
       - task: SonarCloudPublish@1
         inputs:
