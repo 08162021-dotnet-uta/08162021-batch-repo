@@ -21,7 +21,7 @@ loginform.addEventListener('submit', (e) => {
 			console.log(sessionStorage.getItem('user'));
 			console.log(sessionStorage.user);
 			console.log(sessionStorage['user']);
-			sessionStorage.clear()
+			//sessionStorage.clear()
 
 			location.href = "welcomeuser.html";
 		})
