@@ -39,6 +39,7 @@ stages:
       #   inputs:
       #     packageType: 'sdk'
       #     version: '5.0.x'
+      #test
       - task: NuGetToolInstaller@1
 
       - task: NuGetCommand@2
