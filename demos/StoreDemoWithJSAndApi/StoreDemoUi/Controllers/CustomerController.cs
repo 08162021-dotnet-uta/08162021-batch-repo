@@ -46,10 +46,20 @@ namespace StoreDemoUi.Controllers
 
 		// GET: CustomerController/Create - this is the route for conventional routing 
 		// Attribute routing involves using attributes to define the path
-		[HttpPut("customercreate/{id}")]
-		public ActionResult Create(int id)
+		[HttpPost("register")]
+		public async Task<ActionResult<ViewModelCustomer>> Create(ViewModelCustomer c)
 		{
-			return View();
+			if (!ModelState.IsValid) return BadRequest();
+
+			//ViewModelCustomer c = new ViewModelCustomer() { Fname = fname, Lname = lname };
+			//send fname and lname into a method of the business layer to check the Db fo that guy/gal;
+			ViewModelCustomer c1 = await _customerrepo.RegisterCustomerAsync(c);
+			if (c1 == null)
+			{
+				return NotFound();
+			}
+
+			return Created($"~customer/{c1.CustomerId}", c1);
 		}
 
 		// POST: CustomerController/Create

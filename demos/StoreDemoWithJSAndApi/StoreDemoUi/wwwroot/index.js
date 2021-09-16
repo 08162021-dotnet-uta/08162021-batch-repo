@@ -48,3 +48,7 @@ function SeePlayers() {
 function Login() {
 	location.href = "login.html";
 }
+
+function Register() {
+	location.href = "register.html";
+}
