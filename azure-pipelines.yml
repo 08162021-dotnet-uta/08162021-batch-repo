@@ -72,7 +72,7 @@ stages:
       - task: PublishCodeCoverageResults@1
         inputs:
           codeCoverageTool: 'Cobertura'
-          summaryFileLocation: '**/coburtura/coverage.xml'
+          summaryFileLocation: '**/cobertura/coverage.xml'
       - task: SonarCloudAnalyze@1
       - task: SonarCloudPublish@1
         inputs:
