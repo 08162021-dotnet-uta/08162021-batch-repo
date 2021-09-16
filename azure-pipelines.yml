@@ -63,7 +63,7 @@ stages:
         displayName: building
         inputs:
           command: 'build'
-          projects: demos/StoreDemoWithJSAndApi/StoreDemoUi/StoreDemoUi.sln
+          projects: demos/StoreDemoWithJSAndApi/StoreDemoUi.sln
           workingDirectory: '$(pathtoproject)'
           arguments: '--configuration $(buildConfiguration)'
   
