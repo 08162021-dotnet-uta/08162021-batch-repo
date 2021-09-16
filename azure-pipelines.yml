@@ -74,7 +74,7 @@ stages:
           projects: '$(pathtosln)'
           arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
           testRunTitle: 'Store Demo Tests'
-          workingDirectory: '$(pathtosln)'
+          workingDirectory: '$(pathtoproject)'
       
       - task: PublishCodeCoverageResults@1
         inputs:
