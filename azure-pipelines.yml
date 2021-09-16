@@ -58,7 +58,7 @@ stages:
         inputs:
           command: 'build'
           projects: $(pathtosln)
-          #workingDirectory: '$(pathtoproject)'
+          workingDirectory: '$(pathtoproject)'
           arguments: '--configuration $(buildConfiguration)'
   
       - task: DotNetCoreCLI@2
