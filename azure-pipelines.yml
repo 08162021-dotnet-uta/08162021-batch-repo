@@ -25,7 +25,7 @@ pool:
 variables:
   #pathtoproj: variable1
   pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
-  pathToSln: demos/StoreDemoWithJSAndApi/StoreDemoUi/StoreDemoUi.sln
+  pathToSln: demos/StoreDemoWithJSAndApi/StoreDemoUi.sln
   buildConfiguration: 'Release'
 
 stages:
