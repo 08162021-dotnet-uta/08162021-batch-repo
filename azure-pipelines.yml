@@ -6,9 +6,7 @@
 # trigger:
 # - main
 
-variables:
-  pathtoproj: variable1
-  pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
+
 
 # this is how you can designate a specific path  for the trigger
 # no other path can trigger a build other than the one specified.
@@ -24,57 +22,112 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  #pathtoproj: variable1
+  pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
+  pathToSln: demos/StoreDemoWithJSAndApi/StoreDemoUi/StoreDemoUi.sln
+  buildConfiguration: 'Release'
 
 stages:
-- stage: stage1_build
-  jobs:
-  - job: buildjob1
-    steps:
-    - bash: echo this is how you use a variable => $(pathtoproj)
-      displayName: 'Run a one-line script'
-    # - task: DotNetCoreCLI@2
-    #   inputs:
-    #     command: 'build'
-    #     projects: '$(pathtoproj)'
-    #     arguments: 'arghere'
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-      displayName: 'Run a multi-line script'
-  - job: buildjob2
-    displayName: Job2
-    steps:
-    - script:
-        echo this is script2.job2.
-      displayName: 'Run a multi-line script'
+  - stage: Build
+    jobs:
+    - job: buildJOb
+      steps:
+      #this step may not be needed
+      # - task: DotNetCoreCLI@2
+      #   displayName: 'install .NET 5 sdk'
+      #   inputs:
+      #     packageType: 'sdk'
+      #     version: '5.0.x'
+      - task: NuGetToolInstaller@1
+
+      - task: NuGetCommand@2
+        inputs:
+        #maybe not needed?
+          command: 'restore'
+          restoreSolution: '$(pathToSln)'
+  # - stage: Sonarcloud
+    # - job: SonarCloud
+    #   steps:
+  - stage: Publish
+    jobs:
+    - job: publish
+      steps:
+      - task: DotNetCoreCLI@2
+        displayName: Publishing
+        inputs:
+          command: 'publish'
+          publishWebProjects: true
+          projects: $(pathToSln)
+          # this creates an 'Artifact' and stores it in the DefaultWorkingDirectory here on Azure
+          zipAfterPublish: true
+      - task: AzureRmWebAppDeployment@4
+        displayName: Deployment
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Project-3-Training(e37a1117-750a-4552-bb20-e84ed6f3c85d)'
+          appType: 'webApp'
+          WebAppName: 'StoreDemo08162021batch'
+          #deployToSlotOrASE: true
+          #ResourceGroupName: '08162021batch-resource-group'
+          #SlotName: 'production'
+          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 
-- stage: stage2_test
-  jobs:
-  - job: testjob1
-    steps:
-    - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
-      displayName: 'Run a one-line script'
-    - script:
-        echo this is script2.job2.
-    - bash: echo $(Build.BuildId)
-      displayName: 'ran the stage2.script2'
+    
 
-- stage: stage3_deploy
-  jobs:
-  - job: deployjob1
-    steps:
-    - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
-      displayName: 'Run a one-line script'
-    - script:
-        echo this is script2.stagedeploy.job2.
-      displayName: 'ran the stage2.script2'
-    - bash: echo $(Build.BuildNumber)
-    - bash: echo $(Build.BuildId)
-    - bash: echo $(Build.SourceBranchNme)
-    - bash: echo $(Build.SourcesDirectory)
-    - bash: echo $(System.DefaultWorkingDirectory)
-    - bash: ls $(System.DefaultWorkingDirectory)
-    - bash: ls -R $(System.DefaultWorkingDirectory)
-    - bash: echo $(Build.ArtifactStagingDirectory)
-  dependsOn: []
+
+
+# stages:
+# - stage: stage1_build
+#   jobs:
+#   - job: buildjob1
+#     steps:
+#     - bash: echo this is how you use a variable => $(pathtoproj)
+#       displayName: 'Run a one-line script'
+#     # - task: DotNetCoreCLI@2
+#     #   inputs:
+#     #     command: 'build'
+#     #     projects: '$(pathtoproj)'
+#     #     arguments: 'arghere'
+#     - script: |
+#         echo Add other tasks to build, test, and deploy your project.
+#         echo See https://aka.ms/yaml
+#       displayName: 'Run a multi-line script'
+#   - job: buildjob2
+#     displayName: Job2
+#     steps:
+#     - script:
+#         echo this is script2.job2.
+#       displayName: 'Run a multi-line script'
+
+
+# - stage: stage2_test
+#   jobs:
+#   - job: testjob1
+#     steps:
+#     - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
+#       displayName: 'Run a one-line script'
+#     - script:
+#         echo this is script2.job2.
+#     - bash: echo $(Build.BuildId)
+#       displayName: 'ran the stage2.script2'
+
+# - stage: stage3_deploy
+#   jobs:
+#   - job: deployjob1
+#     steps:
+#     - bash: echo stage2.step1 is how you use a variable => $(pathtoproj)
+#       displayName: 'Run a one-line script'
+#     - script:
+#         echo this is script2.stagedeploy.job2.
+#       displayName: 'ran the stage2.script2'
+#     - bash: echo $(Build.BuildNumber)
+#     - bash: echo $(Build.BuildId)
+#     - bash: echo $(Build.SourceBranchNme)
+#     - bash: echo $(Build.SourcesDirectory)
+#     - bash: echo $(System.DefaultWorkingDirectory)
+#     - bash: ls $(System.DefaultWorkingDirectory)
+#     - bash: ls -R $(System.DefaultWorkingDirectory)
+#     - bash: echo $(Build.ArtifactStagingDirectory)
+#   dependsOn: []
