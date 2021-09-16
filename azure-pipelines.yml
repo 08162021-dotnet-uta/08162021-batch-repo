@@ -47,10 +47,44 @@ stages:
           command: 'restore'
           restoreSolution: '$(pathToSln)'
   
-  # - stage: Sonarcloud
-    # - job: SonarCloud
-    #   steps:
+  - stage: Sonarcloud
+    jobs:
+    - job: SonarCloud
+      steps:
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'Sonarcloud-token-08162021batch'
+          organization: '08162021batch'
+          scannerMode: 'MSBuild'
+          projectKey: '08162021batch_08162021batchStoreDemo'
+          projectName: '08162021batchStoreDemo'
+      
+      - task: DotNetCoreCLI@2
+        displayName: building
+        inputs:
+          command: 'build'
+          projects: '$(pathToSln)'
+          workingDirectory: '$(pathtoproject)'
+          arguments: '--configuration $(buildConfiguration)'
   
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'test'
+          projects: '$(pathToSln)'
+          arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+          testRunTitle: 'Store Demo Tests'
+          workingDirectory: '$(pathtoproject)'
+      
+      - task: PublishCodeCoverageResults@1
+        inputs:
+          codeCoverageTool: 'Cobertura'
+          summaryFileLocation: '**/coburtura/coverage.xml'
+      - task: SonarCloudAnalyze@1
+      - task: SonarCloudPublish@1
+        inputs:
+          pollingTimeoutSec: '300'
+
+  #last stage
   - stage: Publish
     jobs:
     - job: publish
