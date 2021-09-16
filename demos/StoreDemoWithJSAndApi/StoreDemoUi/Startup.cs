@@ -44,7 +44,7 @@ namespace StoreDemoUi
 				// otherwise use the Connection string I have in secrets.json
 				if (!options.IsConfigured)
 				{
-					options.UseSqlServer(Configuration.GetConnectionString("DevDb"));
+					options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
 				}
 			});
 

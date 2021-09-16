@@ -7,6 +7,8 @@ using DemoStoreBusinessLayer;
 using DemoStoreBusinessLayer.Interfaces;
 using DemoStoreDbContext.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using StoreDemoUi.Controllers;
 using Xunit;
 
@@ -25,8 +27,9 @@ namespace StoreDemo.Tests
 			{
 				// ARRANGE
 				// create the foundation of the test.
-				_context.Database.EnsureDeleted();// delete any Db fro a previous test
-				_context.Database.EnsureCreated();// create anew the Db... you will need ot seed it again.
+				// create a new InMemory Db to use for this test.
+				_context.Database.EnsureDeleted();// delete any Db from a previous test
+				_context.Database.EnsureCreated();// create a new Db... you will need to seed it again.
 
 				Customer c1 = new Customer() { FirstName = "Ben", LastName = "Franklin" };
 				Customer c2 = new Customer() { FirstName = "Sven", LastName = "Franklin" };
@@ -58,8 +61,16 @@ namespace StoreDemo.Tests
 		public async Task CustomerListReturnsCorrectList()
 		{
 			// ARRANGE
+			// create a mock of teh CustomerRepository dependency
 			ICustomerRepository repoMock = new CustomerRepositoryMock();
-			CustomerController cc = new CustomerController(repoMock);
+
+			// grab the logger service
+			var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
+			var factory = serviceProvider.GetService<ILoggerFactory>();
+			var _logger = factory.CreateLogger<CustomerController>();
+
+			//send both the mock and service into the controller to instantiate it.
+			CustomerController cc = new CustomerController(repoMock, _logger);
 
 			// ACT
 			List<ViewModelCustomer> result = await cc.Details();
@@ -68,5 +79,38 @@ namespace StoreDemo.Tests
 			Assert.Equal("Leche", result[0].Fname);
 		}
 
-	}
-}
+		//[Fact]
+		//public async Task LoginCustomerAsyncReturnsTheLoggedInUser()
+		//{
+		//	using (Demo_08162021batchContext _context = new Demo_08162021batchContext(options))
+		//	{
+		//		// ARRANGE
+		//		// create the foundation of the test.
+		//		// create a new InMemory Db to use for this test.
+		//		_context.Database.EnsureDeleted();// delete any Db from a previous test
+		//		_context.Database.EnsureCreated();// create a new Db... you will need to seed it again.
+
+		//		// fill the Db with some customers
+		//		Customer c1 = new Customer() { FirstName = "Ben", LastName = "Franklin" };
+		//		Customer c2 = new Customer() { FirstName = "Sven", LastName = "Franklin" };
+		//		Customer c3 = new Customer() { FirstName = "Chen", LastName = "Franklin" };
+		//		ViewModelCustomer c4 = new ViewModelCustomer() { Fname = "Ben", Lname = "Franklin" };
+		//		_context.Customers.Add(c1);
+		//		_context.Customers.Add(c2);
+		//		_context.Customers.Add(c3);
+		//		_context.SaveChanges();
+
+		//		CustomerRepository cr = new CustomerRepository(_context);
+
+		//		// ACT
+		//		// instead of using the context directly, I'm going to use the customerRepository that's using the mocked Db and data
+		//		ViewModelCustomer result = await cr.LoginCustomerAsync(c4);
+
+		//		// ASSERT
+		//		Assert.True(result.Lname == "Franklin" && result.Fname == "Ben");
+		//	}
+		//}
+
+
+	}// EoC
+}// EoN
