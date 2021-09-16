@@ -25,7 +25,7 @@ pool:
 variables:
   #pathtoproj: variable1
   pathtoproject: demos/StoreDemoWithJSAndApi/StoreDemoUi
-  pathToSln: demos/StoreDemoWithJSAndApi/StoreDemoUi.sln
+  pathtosln: demos/StoreDemoWithJSAndApi/StoreDemoUi.sln
   buildConfiguration: 'Release'
 
 stages:
@@ -46,7 +46,7 @@ stages:
         inputs:
         #maybe not needed?
           command: 'restore'
-          restoreSolution: '$(pathToSln)'
+          restoreSolution: '$(pathtosln)'
   
   - stage: Sonarcloud
     jobs:
@@ -71,7 +71,7 @@ stages:
       - task: DotNetCoreCLI@2
         inputs:
           command: 'test'
-          projects: '$(pathToSln)'
+          projects: '$(pathtosln)'
           arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
           testRunTitle: 'Store Demo Tests'
           workingDirectory: '$(pathtoproject)'
@@ -95,7 +95,7 @@ stages:
         inputs:
           command: 'publish'
           publishWebProjects: true
-          projects: $(pathToSln)
+          projects: $(pathtosln)
           # this creates an 'Artifact' and stores it in the DefaultWorkingDirectory here on Azure
           zipAfterPublish: true
       - task: AzureRmWebAppDeployment@4
