@@ -79,37 +79,37 @@ namespace StoreDemo.Tests
 			Assert.Equal("Leche", result[0].Fname);
 		}
 
-		//[Fact]
-		//public async Task LoginCustomerAsyncReturnsTheLoggedInUser()
-		//{
-		//	using (Demo_08162021batchContext _context = new Demo_08162021batchContext(options))
-		//	{
-		//		// ARRANGE
-		//		// create the foundation of the test.
-		//		// create a new InMemory Db to use for this test.
-		//		_context.Database.EnsureDeleted();// delete any Db from a previous test
-		//		_context.Database.EnsureCreated();// create a new Db... you will need to seed it again.
+		[Fact]
+		public async Task LoginCustomerAsyncReturnsTheLoggedInUser()
+		{
+			using (Demo_08162021batchContext _context = new Demo_08162021batchContext(options))
+			{
+				// ARRANGE
+				// create the foundation of the test.
+				// create a new InMemory Db to use for this test.
+				_context.Database.EnsureDeleted();// delete any Db from a previous test
+				_context.Database.EnsureCreated();// create a new Db... you will need to seed it again.
 
-		//		// fill the Db with some customers
-		//		Customer c1 = new Customer() { FirstName = "Ben", LastName = "Franklin" };
-		//		Customer c2 = new Customer() { FirstName = "Sven", LastName = "Franklin" };
-		//		Customer c3 = new Customer() { FirstName = "Chen", LastName = "Franklin" };
-		//		ViewModelCustomer c4 = new ViewModelCustomer() { Fname = "Ben", Lname = "Franklin" };
-		//		_context.Customers.Add(c1);
-		//		_context.Customers.Add(c2);
-		//		_context.Customers.Add(c3);
-		//		_context.SaveChanges();
+				// fill the Db with some customers
+				Customer c1 = new Customer() { FirstName = "Ben", LastName = "Franklin" };
+				Customer c2 = new Customer() { FirstName = "Sven", LastName = "Franklin" };
+				Customer c3 = new Customer() { FirstName = "Chen", LastName = "Franklin" };
+				ViewModelCustomer c4 = new ViewModelCustomer() { Fname = "Ben", Lname = "Franklin" };
+				_context.Customers.Add(c1);
+				_context.Customers.Add(c2);
+				_context.Customers.Add(c3);
+				_context.SaveChanges();
 
-		//		CustomerRepository cr = new CustomerRepository(_context);
+				CustomerRepository cr = new CustomerRepository(_context);
 
-		//		// ACT
-		//		// instead of using the context directly, I'm going to use the customerRepository that's using the mocked Db and data
-		//		ViewModelCustomer result = await cr.LoginCustomerAsync(c4);
+				// ACT
+				// instead of using the context directly, I'm going to use the customerRepository that's using the mocked Db and data
+				ViewModelCustomer result = await cr.LoginCustomerAsync(c4);
 
-		//		// ASSERT
-		//		Assert.True(result.Lname == "Franklin" && result.Fname == "Ben");
-		//	}
-		//}
+				// ASSERT
+				Assert.True(result.Lname == "Franklin" && result.Fname == "Ben");
+			}
+		}
 
 
 	}// EoC
