@@ -20,7 +20,7 @@ trigger:
     - demos/StoreDemoWithJSAndApi/StoreDemoUi
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 variables:
   #pathtoproj: variable1
