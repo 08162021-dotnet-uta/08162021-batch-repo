@@ -26,5 +26,4 @@ export class RegisterCustomerComponent implements OnInit {
     console.log(`new customer is...${this.fname} ${this.lname}`)
     this.passNewCustomerToParent.emit(c);
   }
-
 }
