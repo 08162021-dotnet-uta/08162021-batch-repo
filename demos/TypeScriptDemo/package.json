@@ -1,0 +1,15 @@
+{
+  "name": "markstypescriptdemo",
+  "version": "1.0.1",
+  "description": "This is a demo. plain and simple",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "tsc": "tsc"
+  },
+  "author": "Mark Moore",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
