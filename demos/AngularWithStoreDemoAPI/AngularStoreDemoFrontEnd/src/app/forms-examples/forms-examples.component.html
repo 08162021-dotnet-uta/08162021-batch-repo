@@ -1,0 +1,78 @@
+<p>forms-examples works!</p>
+
+<!-- Reactive form -->
+<!-- <form (submit)="submitReactiveForm()" [formGroup]="reactiveformexample">
+  <label for="fname">First Name:</label>
+  <input type="text" formControlName="fname" required><br> -->
+
+<!-- I'm able to use the 'fname' here ONLY because I've created a getter function in the .ts class
+that returns the  -->
+<!-- <div *ngIf="fname?.pristine">
+    <h6>This value is pristine</h6>
+  </div>
+  <div *ngIf="fname?.touched">
+    <h6>This value is touched</h6>
+  </div>
+  <div *ngIf="fname?.invalid">
+    <h6>This value is invalid</h6>
+  </div>
+  <div *ngIf="fname?.valid">
+    <h6>This value is VALID!</h6>
+  </div>
+  <label for="lname">Last Name:</label>
+  <input type="text" name="lname" formControlName="lname"><br>
+
+  <label for="email">email:</label>
+  <input type="email" name="email" formControlName="email"><br>
+
+  <label for="phonenumber">Phone Number:</label>
+  <input type="tel" name="phonenumber" formControlName="phonenumber"><br>
+
+  <label for="username">UserName:</label>
+  <input type="text" name="username" formControlName="username"><br>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" formControlName="password"><br>
+  <button type="submit">Submit the Reactive Form!</button>
+
+</form> -->
+
+<!-- template-driven form example -->
+<form (submit)="submitTemplateForm()">
+  <label for="fname2">First Name:</label>
+  <input class="template-validation" type="text" [(ngModel)]="fname2" required #fname22="ngModel" pattern="[a-zA-Z]*"
+    [ngModelOptions]="{standalone: true}" minlength="3" maxlength="10"><br>
+  <div *ngIf="fname22?.pristine">
+    <h6>This value is pristine</h6>
+  </div>
+  <div *ngIf="fname22?.touched">
+    <h6>This value is touched</h6>
+  </div>
+  <div *ngIf="fname22?.invalid">
+    <h6>This value is invalid</h6>
+  </div>
+  <div *ngIf="fname22?.valid">
+    <h6>This value is VALID!</h6>
+  </div>
+  <label for="lname2">Last Name:</label>
+  <input class="template-validation" type="text" name="lname2" [(ngModel)]="lname2" required
+    [ngModelOptions]="{standalone: true}"><br>
+
+  <label for="email2">email:</label>
+  <input [(ngModel)]="email2" class="template-validation" type="email" name="email2" required
+    [ngModelOptions]="{standalone: true}"><br>
+
+  <label for="phonenumber2">Phone Number:</label>
+  <input [(ngModel)]="phonenumber2" class="template-validation" type="tel" name="phonenumber2" required
+    [ngModelOptions]="{standalone: true}"><br>
+
+  <label for="username2">UserName:</label>
+  <input [(ngModel)]="username2" class="template-validation" type="text" name="username2"
+    [ngModelOptions]="{standalone: true}" pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+    required><br>
+
+  <label for="password2">Password:</label>
+  <input [(ngModel)]="password2" class="template-validation" type="password" name="password2" required
+    [ngModelOptions]="{standalone: true}"><br>
+  <button type="submit">Submit the Reactive Form!</button>
+</form>
