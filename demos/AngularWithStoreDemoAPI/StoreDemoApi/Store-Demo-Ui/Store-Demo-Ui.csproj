@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Store_Demo_Ui</RootNamespace>
+    <UserSecretsId>c2c9329e-792b-420d-be41-1ffc17ea5e73</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoStoreBusinessLayer\DemoStoreBusinessLayer.csproj" />
+    <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
+  </ItemGroup>
+
+</Project>
