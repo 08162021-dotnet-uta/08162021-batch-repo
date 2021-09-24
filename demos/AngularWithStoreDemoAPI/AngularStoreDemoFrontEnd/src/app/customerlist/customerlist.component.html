@@ -1,0 +1,26 @@
+<p>customerlist works!</p>
+
+<ul>
+  <li *ngFor="let cust of customerlist">
+    <h3 (click)="customerdetails(cust.customerId)">
+      {{cust.customerId}} {{cust.fname}} {{cust.lname}}
+    </h3>
+  </li>
+</ul>
+
+<button (click)="sortbynumbers()">Sort List BY NUMBERS</button>
+<button (click)="sortalpha()">Sort List alphabetically</button>
+
+<!-- add a button to add a new customer -->
+<app-register-customer (passNewCustomerToParent)="registernewcustomer($event)"></app-register-customer>
+
+<!-- below will be the component to diplay the user when selected -->
+<app-customerdetails [selectedCustomer]="selectedCustomer"></app-customerdetails>
+
+<ul>
+  <li *ngFor="let cust of customerlist2">
+    <h3 (click)="customerdetails(cust.customerId)">
+      {{cust.customerId}} {{cust.fname}} {{cust.lname}}
+    </h3>
+  </li>
+</ul>
