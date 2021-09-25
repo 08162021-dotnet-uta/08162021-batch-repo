@@ -13,6 +13,7 @@ export class CustomerlistComponent implements OnInit {
   // inject services into the constructor. WHY???
   // constuctor creates the class.. then html is created, etc...
   constructor(private customerService: CustomerService) { }
+
   selectedCustomer?: Customer;
   customerlist: Customer[] = [];
   customerlist2: Customer[] = [];
@@ -30,14 +31,10 @@ export class CustomerlistComponent implements OnInit {
         jimmy => console.log(`There was a ${jimmy} error`), // runs only if there was an error
         () => console.log(`There was something I wanted to say...`)// always runs.
       );
-
-    // create an array
-
     // get the most current array
     // then assign it to the subject as assignment to customerlist.
     // this.observablelist.subscribe(x => this.tempcustomerlist = x);
     // this.tempcustomerlist.map(x => console.log(x.fname));
-
     // this.subject.subscribe({ next: (v) => this.customerlist = v });
 
     // this.subject.subscribe({
@@ -45,12 +42,8 @@ export class CustomerlistComponent implements OnInit {
     //     this.customerlist = v
     //   }
     // });
-
-
-
     // call next() to emit to all observers.
     //this.subject.next(tempcustomerlist);
-
   }
 
   customerdetails(id: number): void {
@@ -91,6 +84,10 @@ export class CustomerlistComponent implements OnInit {
       if (a.fname.toLowerCase() > b.fname.toLowerCase()) { return 1; }
       return 0;
     })
+  }
+
+  testexample(x: number): number {
+    return x * 2;
   }
 
 
