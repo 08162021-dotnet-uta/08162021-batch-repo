@@ -19,13 +19,17 @@ describe('AppComponent', () => {
   it(`should have as title 'AngularStoreDemoFrontEnd'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('AngularStoreDemoFrontEnd');
+    expect(app.title).toEqual('Marks really cool Angular demo');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('AngularStoreDemoFrontEnd app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Marks really cool Angular demo is running!');
   });
-});
+
+
+
+
+});// end of tests

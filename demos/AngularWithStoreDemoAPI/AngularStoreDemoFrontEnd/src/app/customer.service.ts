@@ -22,8 +22,6 @@ export class CustomerService {
   CustomerList(): Observable<Customer[]> {
     // return this.http.get<Customer[]>(`${this.url}Customerlist`);
     return this.http.get<Customer[]>(`${this.url2}customerlist`);
-
-
   }
 
   NewCustomer(c: Customer): Observable<Customer> {
