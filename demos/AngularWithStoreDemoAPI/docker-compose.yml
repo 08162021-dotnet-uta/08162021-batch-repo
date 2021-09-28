@@ -1,0 +1,14 @@
+#version: '3.0.0'
+services:
+  apistoredemocontainer:
+    build: ./StoreDemoApi
+    image: apistoredemoimage
+    ports: 
+    - "5001:80"
+    environment: 
+    - ConnectionStrings__AzureDb=Server=tcp:08162021batch-sqldb-server.database.windows.net,1433;Initial Catalog=08162021batch-sqldb;Persist Security Info=False;User ID=revature-08162021batch;Password=Batch08162021;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+  angularstoredemocontainer:
+    build: ./AngularStoreDemoFrontEnd
+    image: angularstoredemoimage
+    ports:
+    - "4200:80"

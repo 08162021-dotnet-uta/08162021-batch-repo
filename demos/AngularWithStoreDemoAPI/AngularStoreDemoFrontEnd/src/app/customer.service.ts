@@ -9,8 +9,8 @@ import { Customer } from './customer';
 export class CustomerService {
 
   constructor(private http: HttpClient) { }
-  private url1 = 'https://localhost:44330/Customer/'
-  private url2 = 'https://localhost:5001/Customer/'
+  private url1 = 'http://localhost:44330/Customer/'
+  private url2 = 'http://localhost:5001/Customer/' // had to change these from 'https' to 'http' bc the container isn't set up to use httos
 
   httpOptions = {
     headers: new HttpHeaders({

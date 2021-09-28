@@ -1,0 +1,102 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "type": "docker-build",
+      "label": "docker-build: debug",
+      "dependsOn": [
+        "build"
+      ],
+      "dockerBuild": {
+        "tag": "storedemoapi:dev",
+        "target": "base",
+        "dockerfile": "${workspaceFolder}/Store-Demo-Ui/Dockerfile",
+        "context": "${workspaceFolder}",
+        "pull": true
+      },
+      "netCore": {
+        "appProject": "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj"
+      }
+    },
+    {
+      "type": "docker-build",
+      "label": "docker-build: release",
+      "dependsOn": [
+        "build"
+      ],
+      "dockerBuild": {
+        "tag": "storedemoapi:latest",
+        "dockerfile": "${workspaceFolder}/Store-Demo-Ui/Dockerfile",
+        "context": "${workspaceFolder}",
+        "pull": true
+      },
+      "netCore": {
+        "appProject": "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj"
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: debug",
+      "dependsOn": [
+        "docker-build: debug"
+      ],
+      "dockerRun": {
+        "os": "Windows"
+      },
+      "netCore": {
+        "appProject": "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj",
+        "enableDebugging": true
+      }
+    },
+    {
+      "type": "docker-run",
+      "label": "docker-run: release",
+      "dependsOn": [
+        "docker-build: release"
+      ],
+      "dockerRun": {
+        "os": "Windows"
+      },
+      "netCore": {
+        "appProject": "${workspaceFolder}/Store-Demo-Ui/Store-Demo-Ui.csproj"
+      }
+    }
+  ]
+}

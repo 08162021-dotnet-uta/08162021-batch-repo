@@ -1,0 +1,46 @@
+# STAGE 1:you must begin the docker file with a base image from hub.docker.com
+# FROM starts a stage of the image. every command is a layer in the image.
+# give an alias for hte stage name with 'AS'
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+#WORKDIR sets a location INSIDE thre container as place where you are working.
+# is the dir doesn't exist WORKDIR will create it.
+WORKDIR /app
+# serves to set a preliminary port that the continer will listen on
+# this can be overridden at docker run(time)
+EXPOSE 5000
+
+# sets an environment variable to listen to 5000 on the container
+ENV ASPNETCORE_URLS=http://*:5000
+
+#STAGE 2:
+# grab the image of the SDK from hub.docker.com
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+# move the WORKDIR to this new file
+WORKDIR /src
+# 1st arg = relative path to a file from the Dockerfile. 
+# 2nd arg = relative path to a file from the WORKDIR. 
+COPY ["batch08162021dockerdemo.csproj", "batch08162021dockerdemo/"]
+#RUN the dotnet command
+RUN dotnet restore "batch08162021dockerdemo/batch08162021dockerdemo.csproj"
+# COPY everything else from outside th econtainer to inside to the WORKDIR
+COPY . .
+# change the workdir
+WORKDIR "/src/batch08162021dockerdemo"
+# build the app inside the container
+RUN dotnet build "batch08162021dockerdemo.csproj" -c Release -o /app/build
+
+# STAGE 3:
+# use the build stage as a foundation
+FROM build AS publish
+# publish to a new 'publish' dir.
+RUN dotnet publish "batch08162021dockerdemo.csproj" -c Release -o /app/publish
+
+# STAGE 4:
+# uset he base stage as a foundation
+FROM base AS final
+# change workdir
+WORKDIR /app
+# copy everything form the publish dor into the current WORKDIR.
+COPY --from=publish /app/publish .
+# give commands to run on build.
+ENTRYPOINT ["dotnet", "batch08162021dockerdemo.dll"]
